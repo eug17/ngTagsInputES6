@@ -235,8 +235,8 @@ const tagsInput = ($timeout, $document, $window, $q, tagsInputConfig, tiUtil) =>
 
         scope.eventHandlers = {
             input: {
-                keydown: ($event) => {
-                    events.trigger('input-keydown', $event);
+                keyup: ($event) => {
+                    events.trigger('input-keyup', $event);
                 },
                 focus: () => {
                     if (scope.hasFocus) {
