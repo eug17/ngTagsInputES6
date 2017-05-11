@@ -9,8 +9,9 @@ import TranscludeAppend from './transclude-append';
 import tiUtil from './util';
 import tagsInputConfig from './configuration';
 
-export default angular.module('ngTagsInput', [])
-    .provider('tiUtil', tiUtil)
+
+var ngTagsInput = angular.module('ngTagsInput', [])
+    .service('tiUtil', tiUtil)
     .provider('tagsInputConfig', tagsInputConfig)
     .directive('autoComplete', AutoComplete)
     .directive('tiAutocompleteMatch', AutoCompleteMatch)
@@ -19,3 +20,4 @@ export default angular.module('ngTagsInput', [])
     .directive('tiTagItem', TagItem)
     .directive('tagsInput', TagsInput)
     .directive('tiTranscludeAppend', TranscludeAppend);
+module.exports = ngTagsInput;
