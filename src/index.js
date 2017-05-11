@@ -8,7 +8,8 @@ import TagsInput from './tags-input';
 import TranscludeAppend from './transclude-append';
 import tiUtil from './util';
 import tagsInputConfig from './configuration';
-
+import './ng-tags-input.css';
+import './ng-tags-input.bootstrap.css';
 
 var ngTagsInput = angular.module('ngTagsInput', [])
     .service('tiUtil', tiUtil)
