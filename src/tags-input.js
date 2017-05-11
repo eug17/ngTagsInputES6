@@ -324,6 +324,7 @@ const tagsInput = ($timeout, $document, $window, $q, tagsInputConfig, tiUtil) =>
             })
             .on('input-keyup', (event) => {
                 console.log('tags input-keyup: ', event);
+                console.log(event);
                 var key = event.keyCode,
                     addKeys = {},
                     shouldAdd, shouldRemove, shouldSelect, shouldEditLastTag;

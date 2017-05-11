@@ -14,6 +14,7 @@ class TiUtil {
     constructor($timeout, $q) {
         this.$timeout = $timeout;
         this.$q = $q;
+        this.arguments;
     }
 
     debounce = (fn, delay) => {
@@ -23,10 +24,10 @@ class TiUtil {
 
         var timeoutId;
         return () => {
-            var args = arguments;
+            this.arguments = arguments;
             $timeout.cancel(timeoutId);
             timeoutId = $timeout(() => {
-                fn.apply(null, args);
+                fn.apply(null, this.arguments);
             }, delay);
         };
     };
@@ -96,7 +97,7 @@ class TiUtil {
 
     handleUndefinedResult = (fn, valueIfUndefined) => {
         return () => {
-            var result = fn.apply(null, arguments);
+            var result = fn.apply(null, this.arguments);
             return angular.isUndefined(result) ? valueIfUndefined : result;
         };
     };
