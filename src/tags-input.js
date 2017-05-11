@@ -322,8 +322,8 @@ const tagsInput = ($timeout, $document, $window, $q, tagsInputConfig, tiUtil) =>
                 element.triggerHandler('blur');
                 setElementValidity();
             })
-            .on('input-keydown', (event) => {
-                console.log('tags input-keydown: ', event);
+            .on('input-keyup', (event) => {
+                console.log('tags input-keyup: ', event);
                 var key = event.keyCode,
                     addKeys = {},
                     shouldAdd, shouldRemove, shouldSelect, shouldEditLastTag;
