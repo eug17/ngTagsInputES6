@@ -235,8 +235,8 @@ const tagsInput = ($timeout, $document, $window, $q, tagsInputConfig, tiUtil) =>
 
         scope.eventHandlers = {
             input: {
-                keyup: ($event) => {
-                    events.trigger('input-keyup', $event);
+                keydown: ($event) => {
+                    events.trigger('input-keydown', $event);
                 },
                 focus: () => {
                     if (scope.hasFocus) {
@@ -322,8 +322,8 @@ const tagsInput = ($timeout, $document, $window, $q, tagsInputConfig, tiUtil) =>
                 element.triggerHandler('blur');
                 setElementValidity();
             })
-            .on('input-keyup', (event) => {
-                console.log('tags input-keyup: ', event);
+            .on('input-keydown', (event) => {
+                console.log('tags input-keydown: ', event);
                 console.log(event);
                 var key = event.keyCode,
                     addKeys = {},
