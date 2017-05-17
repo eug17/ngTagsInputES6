@@ -62,7 +62,7 @@ const autoComplete = ($document, $timeout, $sce, $q, tagsInputConfig, tiUtil) =>
             displayProperty: [String, '']
         });
 
-        $scope.suggestionList = new SuggestionList($scope.source, $scope.options, $scope.events, tiUtil);
+        $scope.suggestionList = new SuggestionList($scope.source, $scope.options, $scope.events, tiUtil, $q);
 
         this.registerAutocompleteMatch = () => {
             return {
