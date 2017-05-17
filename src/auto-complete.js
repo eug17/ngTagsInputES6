@@ -36,7 +36,6 @@ import {
     KEYS
 } from './constants';
 import template from './auto-complete.html';
-import templateAutocomplete from './auto-complete-match.html';
 
 const autoComplete = ($document, $timeout, $sce, $q, tagsInputConfig, tiUtil) => ({
     restrict: 'E',
@@ -50,7 +49,7 @@ const autoComplete = ($document, $timeout, $sce, $q, tagsInputConfig, tiUtil) =>
         $scope.events = tiUtil.simplePubSub();
 
         tagsInputConfig.load('autoComplete', $scope, $attrs, {
-            template: templateAutocomplete,
+            template: [String, 'ngTagsInput/auto-complete-match.html'],
             debounceDelay: [Number, 100],
             minLength: [Number, 3],
             highlightMatchedText: [Boolean, true],
