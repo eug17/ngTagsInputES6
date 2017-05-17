@@ -96,7 +96,7 @@ class TiUtil {
 
     handleUndefinedResult = (fn, valueIfUndefined) => {
         return () => {
-            var result = fn.apply(null, this.args);
+            var result = fn.apply(null, arguments);
             return angular.isUndefined(result) ? valueIfUndefined : result;
         };
     };

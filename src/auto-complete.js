@@ -126,56 +126,56 @@ const autoComplete = ($document, $timeout, $sce, $q, tagsInputConfig, tiUtil) =>
         tagsInput
             .on('tag-added tag-removed invalid-tag input-blur', () => {
                 suggestionList.reset();
-            })
-            .on('input-change', (value) => {
-                if (shouldLoadSuggestions(value)) {
-                    suggestionList.load(value, tagsInput.getTags());
-                } else {
-                    suggestionList.reset();
-                }
-            })
-            .on('input-focus', () => {
-                var value = tagsInput.getCurrentTagText();
-                if (options.loadOnFocus && shouldLoadSuggestions(value)) {
-                    suggestionList.load(value, tagsInput.getTags());
-                }
-            })
-            .on('input-keydown', (event) => {
-                console.log('autocomplete input-keydown: ', event)
-                var key = event.keyCode,
-                    handled = false;
-
-                if (tiUtil.isModifierOn(event) || hotkeys.indexOf(key) === -1) {
-                    return;
-                }
-
-                if (suggestionList.visible) {
-
-                    if (key === KEYS.down) {
-                        suggestionList.selectNext();
-                        handled = true;
-                    } else if (key === KEYS.up) {
-                        suggestionList.selectPrior();
-                        handled = true;
-                    } else if (key === KEYS.escape) {
-                        suggestionList.reset();
-                        handled = true;
-                    } else if (key === KEYS.enter || key === KEYS.tab) {
-                        handled = scope.addSuggestion();
-                    }
-                } else {
-                    if (key === KEYS.down && scope.options.loadOnDownArrow) {
-                        suggestionList.load(tagsInput.getCurrentTagText(), tagsInput.getTags());
-                        handled = true;
-                    }
-                }
-
-                if (handled) {
-                    event.preventDefault();
-                    event.stopImmediatePropagation();
-                    return false;
-                }
             });
+        tagsInput.on('input-change', (value) => {
+            if (shouldLoadSuggestions(value)) {
+                suggestionList.load(value, tagsInput.getTags());
+            } else {
+                suggestionList.reset();
+            }
+        });
+        tagsInput.on('input-focus', () => {
+            var value = tagsInput.getCurrentTagText();
+            if (options.loadOnFocus && shouldLoadSuggestions(value)) {
+                suggestionList.load(value, tagsInput.getTags());
+            }
+        });
+        tagsInput.on('input-keydown', (event) => {
+            console.log('autocomplete input-keydown: ', event)
+            var key = event.keyCode,
+                handled = false;
+
+            if (tiUtil.isModifierOn(event) || hotkeys.indexOf(key) === -1) {
+                return;
+            }
+
+            if (suggestionList.visible) {
+
+                if (key === KEYS.down) {
+                    suggestionList.selectNext();
+                    handled = true;
+                } else if (key === KEYS.up) {
+                    suggestionList.selectPrior();
+                    handled = true;
+                } else if (key === KEYS.escape) {
+                    suggestionList.reset();
+                    handled = true;
+                } else if (key === KEYS.enter || key === KEYS.tab) {
+                    handled = scope.addSuggestion();
+                }
+            } else {
+                if (key === KEYS.down && scope.options.loadOnDownArrow) {
+                    suggestionList.load(tagsInput.getCurrentTagText(), tagsInput.getTags());
+                    handled = true;
+                }
+            }
+
+            if (handled) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                return false;
+            }
+        });
 
         events.on('suggestion-selected', (index) => {
             scrollToElement(element, index);
@@ -183,7 +183,7 @@ const autoComplete = ($document, $timeout, $sce, $q, tagsInputConfig, tiUtil) =>
     }
 });
 
-function SuggestionList(loadFn, options, events, tiUtil) {
+function SuggestionList(loadFn, options, events, tiUtil, $q) {
     var self = {},
         getDifference, lastPromise, getTagId;
 
