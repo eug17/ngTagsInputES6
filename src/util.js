@@ -23,10 +23,10 @@ class TiUtil {
 
         var timeoutId;
         return () => {
-            var args = arguments;
+            this.args = arguments;
             $timeout.cancel(timeoutId);
             timeoutId = $timeout(() => {
-                fn.apply(null, args);
+                fn.apply(null, this.args);
             }, delay);
         };
     };
@@ -96,7 +96,7 @@ class TiUtil {
 
     handleUndefinedResult = (fn, valueIfUndefined) => {
         return () => {
-            var result = fn.apply(null, arguments);
+            var result = fn.apply(null, this.args);
             return angular.isUndefined(result) ? valueIfUndefined : result;
         };
     };
