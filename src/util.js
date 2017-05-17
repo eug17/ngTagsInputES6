@@ -66,8 +66,8 @@ class TiUtil {
     };
 
     safeHighlight = (str, value) => {
-        str = encodeHTML(str);
-        value = encodeHTML(value);
+        str = this.encodeHTML(str);
+        value = this.encodeHTML(value);
 
         if (!value) {
             return str;
