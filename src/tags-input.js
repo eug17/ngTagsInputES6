@@ -110,7 +110,7 @@ const tagsInput = ($timeout, $document, $window, $q, tagsInputConfig, tiUtil) =>
             spellcheck: [Boolean, true]
         });
 
-        console.log('ctrl: ', tiUtil);
+        // console.log('ctrl: ', tiUtil);
 
         $scope.tagList = new TagList($scope.options, $scope.events,
             tiUtil.handleUndefinedResult($scope.onTagAdding, true),
@@ -323,8 +323,8 @@ const tagsInput = ($timeout, $document, $window, $q, tagsInputConfig, tiUtil) =>
                 setElementValidity();
             })
             .on('input-keydown', (event) => {
-                console.log('tags input-keydown: ', event);
-                console.log(event);
+                // console.log('tags input-keydown: ', event);
+                // console.log(event);
                 var key = event.keyCode,
                     addKeys = {},
                     shouldAdd, shouldRemove, shouldSelect, shouldEditLastTag;

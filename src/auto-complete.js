@@ -78,7 +78,7 @@ const autoComplete = ($document, $timeout, $sce, $q, tagsInputConfig, tiUtil) =>
             events = scope.events,
             shouldLoadSuggestions;
 
-        console.log('link ac:', tagsInput, tagsInputCtrl);
+        // console.log('link ac:', tagsInput, tagsInputCtrl);
 
         options.tagsInput = tagsInput.getOptions();
 
@@ -140,7 +140,7 @@ const autoComplete = ($document, $timeout, $sce, $q, tagsInputConfig, tiUtil) =>
             }
         });
         tagsInput.on('input-keydown', (event) => {
-            console.log('autocomplete input-keydown: ', event)
+            // console.log('autocomplete input-keydown: ', event)
             var key = event.keyCode,
                 handled = false;
 
